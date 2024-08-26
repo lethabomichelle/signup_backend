@@ -1,5 +1,6 @@
 // const { default: mongoose } = require("mongoose");
 const bcrypt = require('bcrypt');
+const pool = require('../config/db')
 
 
 class User {
@@ -7,9 +8,14 @@ class User {
     static id = 1;
 
     static create({ email, name, password }) {
+        const sql = `insert into signup_project.users (email, name, password) values ('${email}', '${name}', '${password}' )`;
+        pool.execute(sql).then(result => {
+            console.log(sql)
+        });
         console.log(email, name, password);
         return { _id: this.id++, email, name, password };
     }
+
 
     static findOne({ email }) {
         return { email: "lethabo@email", name: "lethabo", password: "psdds" }
