@@ -53,7 +53,8 @@ const getUserProfile = expressAsyncHandler((req, res) => {
     res.json({
         _id: req.user._id,
         name: req.user.name,
-        email: req.user.email
+        email: req.user.email,
+        message: "Welcome bitch"
     });
 });
 
