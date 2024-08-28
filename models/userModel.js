@@ -29,13 +29,12 @@ class User {
         return { _id: this.id++, email, name, password };
     }
 
-
-    static findOne(email) {
+    static async findOne(email) {
         // todo: get user from db
         const sql = `SELECT * FROM signup_project.users WHERE email = '${email}'`;
         pool.query(sql).then((result) => {
-            console.log(result)
-            res.json(result[0]);
+            console.log(result[0][0])
+            return result[0][0];
         });
         // return { email: "lethabo@email", name: "lethabo", password: "psdds" }
     }
