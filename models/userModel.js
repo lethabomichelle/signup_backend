@@ -30,13 +30,10 @@ class User {
     }
 
     static async findOne(email) {
-        // todo: get user from db
         const sql = `SELECT * FROM signup_project.users WHERE email = '${email}'`;
         pool.query(sql).then((result) => {
-            console.log(result[0][0])
             return result[0][0];
         });
-        // return { email: "lethabo@email", name: "lethabo", password: "psdds" }
     }
 }
 
